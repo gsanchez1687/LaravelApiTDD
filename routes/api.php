@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PassportAuthController;
@@ -17,6 +18,8 @@ use App\Http\Controllers\PassportAuthController;
 Route::post('register', PassportAuthController::class . '@register')->name('register');
 Route::post('login', PassportAuthController::class . '@login')->name('login');
 
+//listar todas las categorias
+Route::get('categories/all',CategoryController::class . '@admin')->name('categories/all');
 
 //protected routes
 Route::middleware('auth:api')->group(function () {

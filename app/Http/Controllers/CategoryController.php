@@ -26,4 +26,14 @@ class CategoryController extends Controller
             return response()->json(['message' => 'Error al obtener la categoria'], 500);
         }
     }
+
+    public function store(Request $request)
+    {
+        try {
+            $category = CategoryModel::create($request->all());
+            return response()->json($category, 200);
+        } catch (\Throwable $th) {
+            return response()->json(['message' => 'Error al crear la categoria'], 500);
+        }
+    }
 }

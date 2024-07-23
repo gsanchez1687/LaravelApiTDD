@@ -1,9 +1,9 @@
 <?php
-
-use App\Http\Controllers\CategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PassportAuthController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -33,6 +33,10 @@ Route::put('category/update/{id}',CategoryController::class . '@update')->name('
 
 //eliminar una categoria
 Route::delete('category/delete/{id}',CategoryController::class . '@destroy')->name('category/delete');
+
+
+//listar productos
+Route::get('products/all',ProductController::class . '@admin')->name('products/all');
 
 //protected routes
 Route::middleware('auth:api')->group(function () {

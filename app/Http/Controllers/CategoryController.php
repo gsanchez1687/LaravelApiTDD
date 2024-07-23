@@ -36,4 +36,17 @@ class CategoryController extends Controller
             return response()->json(['message' => 'Error al crear la categoria'], 500);
         }
     }
+
+    public function update(Request $request, $id)
+    {
+        try {
+            $category = CategoryModel::find($id);
+            $category->update($request->all());
+            return response()->json($category, 200);
+        } catch (\Throwable $th) {
+            return response()->json(['message' => 'Error al actualizar la categoria'], 500);
+        }
+    }
+
+
 }

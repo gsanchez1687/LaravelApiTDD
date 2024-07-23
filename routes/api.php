@@ -28,6 +28,9 @@ Route::get('category/id/{id}',CategoryController::class . '@show')->name('catego
 //crear una categoria
 Route::post('category/create',CategoryController::class . '@store')->name('category/create');
 
+//actualizar una categoria
+Route::put('category/update/{id}',CategoryController::class . '@update')->name('category/update');
+
 //protected routes
 Route::middleware('auth:api')->group(function () {
     Route::post('logout', PassportAuthController::class . '@logout')->name('logout');

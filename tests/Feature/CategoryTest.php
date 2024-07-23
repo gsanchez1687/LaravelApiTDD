@@ -57,4 +57,27 @@ class CategoryTest extends TestCase
         $this->assertEquals('Descripcion de la categoria de prueba', $response->json()['description']);
         $this->assertIsArray($response->json());
     }
+
+    public function test_category_can_be_update(){
+        $this->withoutExceptionHandling();
+
+        //creamos una categoria
+        $category = CategoryModel::create([
+            'name' => 'Categoria de prueba-'.time(),
+            'slug' => 'categoria-de-prueba-'.time(),
+            'description' => 'Descripcion de la categoria de prueba'
+        ]);
+
+        $response = $this->put('/api/category/update/'.$category->id, [
+            'name' => 'Categoria de prueba update-'.time(),
+            'slug' => 'categoria-de-prueba-update-'.time(),
+            'description' => 'Descripcion de la categoria de prueba actualizada'
+        ]);
+
+        $response->assertStatus(200);
+        $this->assertEquals('Categoria de prueba update-'.time(), $response->json()['name']);
+        $this->assertEquals('categoria-de-prueba-update-'.time(), $response->json()['slug']);
+        $this->assertEquals('Descripcion de la categoria de prueba actualizada', $response->json()['description']);
+        $this->assertIsArray($response->json());
+    }
 }

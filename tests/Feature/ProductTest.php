@@ -28,5 +28,24 @@ class ProductTest extends TestCase
         $response = $this->get('/api/products/all');
 
         $response->assertStatus(200);
+
     }
+
+    public function test_product_can_be_one_product_by_id(){
+        //crear un producto
+        $product = ProductModel::create([
+            'name' => 'Producto de prueba-'.time(),
+            'sku' => 'sku-'.time(),
+            'slug' => 'producto-de-prueba-'.time(),
+            'description' => 'Descripcion del producto de prueba',
+            'category_id' => 1,
+            'price' => 1000,
+            'stock' => 10
+        ]);
+
+        $response = $this->get('/api/products/id/'.$product->id);
+
+        $response->assertStatus(200);
+    }
+
 }

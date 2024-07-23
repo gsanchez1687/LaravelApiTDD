@@ -20,4 +20,10 @@ class ProductModel extends Model
         'updated_at',
         'created_at'
     ];
+
+    //agregar relaciones
+    public function category()
+    {
+        return $this->belongsTo(CategoryModel::class, 'category_id', 'id');
+    }
 }

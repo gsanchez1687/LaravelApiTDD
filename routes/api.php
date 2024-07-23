@@ -38,6 +38,9 @@ Route::delete('category/delete/{id}',CategoryController::class . '@destroy')->na
 //listar productos
 Route::get('products/all',ProductController::class . '@admin')->name('products/all');
 
+//obtener un producto
+Route::get('products/id/{id}',ProductController::class . '@show')->name('products/id');
+
 //protected routes
 Route::middleware('auth:api')->group(function () {
     Route::post('logout', PassportAuthController::class . '@logout')->name('logout');

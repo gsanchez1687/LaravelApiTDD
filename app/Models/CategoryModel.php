@@ -14,4 +14,10 @@ class CategoryModel extends Model
         'slug',
         'description'
     ];
+
+    //agregar relaciones
+    public function products()
+    {
+        return $this->hasMany(ProductModel::class, 'category_id', 'id');
+    }
 }

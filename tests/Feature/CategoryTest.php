@@ -80,4 +80,20 @@ class CategoryTest extends TestCase
         $this->assertEquals('Descripcion de la categoria de prueba actualizada', $response->json()['description']);
         $this->assertIsArray($response->json());
     }
+
+    public function test_category_can_be_delete(){
+        $this->withoutExceptionHandling();
+
+        //creamos una categoria
+        $category = CategoryModel::create([
+            'name' => 'Categoria de prueba-'.time(),
+            'slug' => 'categoria-de-prueba-'.time(),
+            'description' => 'Descripcion de la categoria de prueba'
+        ]);
+
+        $response = $this->delete('/api/category/delete/'.$category->id);
+
+        $response->assertStatus(200);
+        $this->assertEquals('Categoria eliminada correctamente', $response->json()['message']);
+    }
 }

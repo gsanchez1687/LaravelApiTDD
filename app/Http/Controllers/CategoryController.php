@@ -48,5 +48,15 @@ class CategoryController extends Controller
         }
     }
 
+    public function destroy($id)
+    {
+        try {
+            $category = CategoryModel::find($id);
+            $category->delete();
+            return response()->json(['message' => 'Categoria eliminada correctamente'], 200);
+        } catch (\Throwable $th) {
+            return response()->json(['message' => 'Error al eliminar la categoria'], 500);
+        }
+    }
 
 }

@@ -31,6 +31,9 @@ Route::post('category/create',CategoryController::class . '@store')->name('categ
 //actualizar una categoria
 Route::put('category/update/{id}',CategoryController::class . '@update')->name('category/update');
 
+//eliminar una categoria
+Route::delete('category/delete/{id}',CategoryController::class . '@destroy')->name('category/delete');
+
 //protected routes
 Route::middleware('auth:api')->group(function () {
     Route::post('logout', PassportAuthController::class . '@logout')->name('logout');

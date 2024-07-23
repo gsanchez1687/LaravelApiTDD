@@ -26,4 +26,26 @@ class ProductController extends Controller
             return response()->json(['message' => 'Error al obtener el producto'], 500);
         }
     }
+
+    public function update(Request $request, $id)
+    {
+        try {
+            $product = ProductModel::find($id);
+            $product->update($request->all());
+            return response()->json($product, 200);
+        } catch (\Throwable $th) {
+            return response()->json(['message' => 'Error al actualizar el producto'], 500);
+        }
+    }
+
+    public function destroy($id)
+    {
+        try {
+            $product = ProductModel::find($id);
+            $product->delete();
+            return response()->json(['message' => 'Producto eliminado'], 200);
+        } catch (\Throwable $th) {
+            return response()->json(['message' => 'Error al eliminar el producto'], 500);
+        }
+    }
 }

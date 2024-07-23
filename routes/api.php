@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PassportAuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -40,6 +41,15 @@ Route::get('products/all',ProductController::class . '@admin')->name('products/a
 
 //obtener un producto
 Route::get('products/id/{id}',ProductController::class . '@show')->name('products/id');
+
+//actuazar un producto
+Route::put('products/update/id/{id}',ProductController::class . '@update')->name('products/update/id');
+
+//eliminar un producto
+Route::delete('products/delete/id/{id}',ProductController::class . '@destroy')->name('products/id/delete');
+
+//agregar producto al carrito
+Route::post('cart/add',CartController::class . '@store')->name('cart/add');
 
 //protected routes
 Route::middleware('auth:api')->group(function () {

@@ -16,4 +16,14 @@ class CategoryController extends Controller
             return response()->json(['message' => 'Error al listar las categorias'], 500);
         }
     }
+
+    public function show($id)
+    {
+        try {
+            $category = CategoryModel::find($id);
+            return response()->json($category, 200);
+        } catch (\Throwable $th) {
+            return response()->json(['message' => 'Error al obtener la categoria'], 500);
+        }
+    }
 }

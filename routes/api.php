@@ -21,6 +21,9 @@ Route::post('login', PassportAuthController::class . '@login')->name('login');
 //listar todas las categorias
 Route::get('categories/all',CategoryController::class . '@admin')->name('categories/all');
 
+//obtener una categoria
+Route::get('category/id/{id}',CategoryController::class . '@show')->name('category/id');
+
 //protected routes
 Route::middleware('auth:api')->group(function () {
     Route::post('logout', PassportAuthController::class . '@logout')->name('logout');

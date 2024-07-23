@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\ProductModel;
 use App\Models\User;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CartModel extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
     protected $table = 'carts';
     protected $fillable = [
         'user_id',

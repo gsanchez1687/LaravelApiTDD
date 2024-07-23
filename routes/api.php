@@ -51,6 +51,15 @@ Route::delete('products/delete/id/{id}',ProductController::class . '@destroy')->
 //agregar producto al carrito
 Route::post('cart/add',CartController::class . '@store')->name('cart/add');
 
+//actualizar producto del carrito
+Route::put('cart/update/id/{id}',CartController::class . '@update')->name('cart/update/id');
+
+//eliminar producto del carrito
+Route::delete('cart/delete/id/{id}',CartController::class . '@destroy')->name('cart/delete/id');
+
+//mostrar productos del carrito
+Route::get('cart/show/id/{id}',CartController::class . '@show')->name('cart/show/id');
+
 //protected routes
 Route::middleware('auth:api')->group(function () {
     Route::post('logout', PassportAuthController::class . '@logout')->name('logout');
